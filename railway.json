@@ -1,0 +1,23 @@
+{
+    "$schema": "https://railway.app/railway.schema.json",
+    "build": {
+      "builder": "DOCKERFILE",
+      "dockerfilePath": "node.Dockerfile",
+      "buildEnvironment": "V2"
+    },
+    "deploy": {
+      "runtime": "V2",
+      "startCommand": "node main.js --prod",
+      "numReplicas": 1,
+      "sleepApplication": false,
+      "restartPolicyType": "ON_FAILURE",
+      "restartPolicyMaxRetries": 10
+    },
+    "environments": {
+      "testing": {
+        "deploy": {
+          "startCommand": "node main.js --testing"
+        }
+      }
+    }
+  }
